@@ -417,7 +417,7 @@ def fetch_weather():
         r=requests.get("https://api.open-meteo.com/v1/forecast",params={
             "latitude":46.0569,"longitude":14.5058,
             "hourly":"temperature_2m,wind_speed_10m,shortwave_radiation",
-            "forecast_days":3,"timezone":"Europe/Ljubljana"},timeout=20)
+            "forecast_days":3,"timezone":"Europe/Ljubljana"},timeout=10)
         h=r.json().get("hourly",{}); times=h.get("time",[])
         return [{"time":times[i],
             "temp":h["temperature_2m"][i] if i<len(h.get("temperature_2m",[])) else None,
